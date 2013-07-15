@@ -50,6 +50,10 @@ namespace Craft.Net.Server.Handlers
         public static void ClickWindow(MinecraftClient client, MinecraftServer server, IPacket _packet)
         {
             var packet = (ClickWindowPacket)_packet;
+
+            if (packet.SlotIndex == -999 && client.Entity.ItemInMouse.Empty)
+                return;
+
             if (packet.MouseButton == 3 && packet.Shift)
                 return; // No effect in vanilla minecraft
             Window window = null;
