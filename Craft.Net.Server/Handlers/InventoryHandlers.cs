@@ -72,8 +72,6 @@ namespace Craft.Net.Server.Handlers
 
             if (packet.SlotIndex == -999)
             {
-                if (heldItem.Empty)
-                    return;
                 var entity = new ItemEntity(client.Entity.GivenPosition +
                                 new Vector3(0, client.Entity.Size.Height, 0), heldItem);
                 entity.Velocity = MathHelper.FowardVector(client.Entity) * new Vector3(0.25);
